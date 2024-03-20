@@ -13,9 +13,9 @@ const Logo = () => {
         alt='logo'
         height='40'
         width='40'
-      ></Image>{" "}
+      ></Image>
       <Image
-        className='dark:block'
+        className='hidden dark:block'
         src='/notion-dark.svg'
         alt='logo'
         height='40'

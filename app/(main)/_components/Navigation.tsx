@@ -1,14 +1,26 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import {
+  ChevronsLeft,
+  MenuIcon,
+  PlusCircle,
+  Search,
+  Settings,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useCallback, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import UserItem from "./UserItem";
+import Item from "./Item";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 
 const Navigation = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
@@ -77,13 +89,13 @@ const Navigation = () => {
     }
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (isMobile) {
       collapseWidth();
     } else {
       resetWidth();
     }
-  }, [isMobile, resetWidth]);
+  }, [isMobile, resetWidth]); */
 
   useEffect(() => {
     if (isMobile) {
@@ -92,6 +104,15 @@ const Navigation = () => {
       resetWidth();
     }
   }, [pathname, isMobile, resetWidth]);
+
+  const handleCreate = () => {
+    const promise = create({ title: "Untitled" });
+    toast.promise(promise, {
+      loading: "Creating a new note..",
+      success: "New note created",
+      error: "Failed to create a new note",
+    });
+  };
 
   return (
     <>
@@ -114,7 +135,14 @@ const Navigation = () => {
           <ChevronsLeft className='h-6 w-6'></ChevronsLeft>
         </div>
         <div>
-          <p>Action items</p>
+          <UserItem></UserItem>
+          <Item label='Search' icon={Search} isSearch onClick={() => {}}></Item>
+          <Item label='Settings' icon={Settings} onClick={() => {}}></Item>
+          <Item
+            onClick={handleCreate}
+            label='New page'
+            icon={PlusCircle}
+          ></Item>
         </div>
         <div className='mt-4'>Documents</div>
         <div
