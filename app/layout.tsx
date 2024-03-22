@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/themeProvider";
 import { ConvexClientProvider } from "@/components/providers/convexProvider";
+import ModalProvider from "@/components/providers/modalProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
             storageKey='noteflow-theme'
           >
             <Toaster position='bottom-center' />
+            <ModalProvider></ModalProvider>
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
