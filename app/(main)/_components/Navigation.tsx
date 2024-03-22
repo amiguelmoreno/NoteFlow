@@ -28,8 +28,10 @@ import TrashBox from "./TrashBox";
 import { useSearch } from "@/hooks/useSearch";
 import { useSettings } from "@/hooks/useSettings";
 import Navbar from "./Navbar";
+import { useRouter } from "next/navigation";
 
 const Navigation = () => {
+  const router = useRouter();
   const search = useSearch();
   const settings = useSettings();
   const pathname = usePathname();
@@ -121,7 +123,9 @@ const Navigation = () => {
   }, [pathname, isMobile, resetWidth]);
 
   const handleCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
     toast.promise(promise, {
       loading: "Creating a new note..",
       success: "New note created",

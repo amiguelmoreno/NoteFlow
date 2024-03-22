@@ -93,6 +93,7 @@ export const create = mutation({
       isArchived: false,
       isPublished: false,
     });
+    console.log(document);
 
     return document;
   },

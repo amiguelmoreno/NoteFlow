@@ -53,6 +53,7 @@ const Menu = ({ documentId }: MenuProps) => {
       >
         <DropdownMenuItem onClick={onArchive}>
           <Trash className='h-4 w-4 mr-2'></Trash>
+          Delete
         </DropdownMenuItem>
         <DropdownMenuSeparator></DropdownMenuSeparator>
         <div className='text-xs text-muted-foreground p-2'>
