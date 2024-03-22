@@ -7,7 +7,7 @@ import { ModeToggle } from "@/components/modeToggle";
 import { useConvexAuth } from "convex/react";
 import { Button } from "@/components/ui/button";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/components/spinner";
 import Link from "next/link";
 
 const Navbar = () => {

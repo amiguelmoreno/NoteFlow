@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/themeProvider";
 import { ConvexClientProvider } from "@/components/providers/convexProvider";
 import ModalProvider from "@/components/providers/modalProvider";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,17 +37,19 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
         <ConvexClientProvider>
-          <ThemeProvider
-            attribute='class'
-            defaultTheme='system'
-            enableSystem
-            disableTransitionOnChange
-            storageKey='noteflow-theme'
-          >
-            <Toaster position='bottom-center' />
-            <ModalProvider></ModalProvider>
-            {children}
-          </ThemeProvider>
+          <EdgeStoreProvider>
+            <ThemeProvider
+              attribute='class'
+              defaultTheme='system'
+              enableSystem
+              disableTransitionOnChange
+              storageKey='noteflow-theme'
+            >
+              <Toaster position='bottom-center' />
+              <ModalProvider></ModalProvider>
+              {children}
+            </ThemeProvider>
+          </EdgeStoreProvider>
         </ConvexClientProvider>
       </body>
     </html>
