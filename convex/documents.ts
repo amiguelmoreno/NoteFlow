@@ -93,7 +93,6 @@ export const create = mutation({
       isArchived: false,
       isPublished: false,
     });
-    console.log(document);
 
     return document;
   },
@@ -200,8 +199,6 @@ export const remove = mutation({
 
 export const getSearch = query({
   handler: async (ctx) => {
-    console.log("server identity", await ctx.auth.getUserIdentity());
-
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {

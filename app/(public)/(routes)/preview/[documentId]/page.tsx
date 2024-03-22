@@ -1,7 +1,6 @@
 "use client";
 
 import Cover from "@/components/cover";
-import Editor from "@/components/editor";
 import Toolbar from "@/components/toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
@@ -26,6 +25,8 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   const onChange = (content: string) => {
     update({ id: params.documentId, content });
   };
+
+  console.log("hola");
 
   if (document === undefined) {
     return (
@@ -53,8 +54,8 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
       <div className='md:max-w-3xl lg:md-max-w-4xl mx-auto'>
         <Toolbar preview initialData={document}></Toolbar>
         <Editor
-          editable={false}
           onChange={onChange}
+          editable={false}
           initialContent={document.content}
         ></Editor>
       </div>
