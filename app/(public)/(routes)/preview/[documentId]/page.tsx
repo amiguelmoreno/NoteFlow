@@ -26,8 +26,6 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
     update({ id: params.documentId, content });
   };
 
-  console.log("hola");
-
   if (document === undefined) {
     return (
       <div>
