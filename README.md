@@ -45,7 +45,7 @@
 The main goal of this proyect is to learn the fundamentals of NextJS, folders routing system, reusable components, databases, api endpoints and more. This is a project that I did in Code with Antonio course.
 <br />
 <br />
-### What did I used to get the best of this project?
+### What did I learn with this project?
 
   * How to make an App wiht NextJS.
   * How folder routing system works.
